@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Header from './components/Header';
+import LoadingSpinner from './components/LoadingSpinner';
 import SearchPage from './components/SearchPage';
 import UserDetails from './components/UserDetails';
 
@@ -16,6 +17,8 @@ function App() {
           {/* Route for user details */}
           <Route path="/user/:username" element={<UserDetails />} />
         </Routes>
+        {/* Example usage of LoadingSpinner */}
+        <LoadingSpinner />
       </div>
     </Router>
   );

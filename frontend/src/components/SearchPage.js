@@ -1,35 +1,36 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import LoadingSpinner from './LoadingSpinner';
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap styles
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 
 // Search page component
 function SearchPage() {
-  const [query, setQuery] = useState(''); // Search query
+  const [query, setQuery] = useState(""); // Search query
   const [results, setResults] = useState([]); // Search results
   const [loading, setLoading] = useState(false); // Loading state
-  const [error, setError] = useState(''); // Error message
+  const [error, setError] = useState(""); // Error message
 
   // Handle search query submission
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
 
     try {
-      const response = await axios.get('/api/github/search', {
+      const response = await axios.get("http://localhost:5000/api/github/search", {
         params: { q: query },
-      });
+      }); // Fetch from backend API
       setResults(response.data.items);
     } catch (err) {
-      setError(err.message || 'Something went wrong. Please try again.');
+      setError(err.message || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div>
+    <div className="container mt-4">
       <h1 className="mb-4">GitHub User Search</h1>
       <form onSubmit={handleSearch}>
         <div className="mb-3">
@@ -70,10 +71,7 @@ function SearchPage() {
                   View on GitHub
                 </a>
               </div>
-              <Link
-                to={`/user/${user.login}`}
-                className="btn btn-outline-primary"
-              >
+              <Link to={`/user/${user.login}`} className="btn btn-outline-primary">
                 View Details
               </Link>
             </div>

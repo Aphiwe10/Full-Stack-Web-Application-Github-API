@@ -26,7 +26,8 @@
     "react-bootstrap": "^2.10.7",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "web-vitals": "^4.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -75,5 +76,17 @@
     }
   },
   "author": "Your Name",
-  "license": "ISC"
+  "license": "ISC",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
